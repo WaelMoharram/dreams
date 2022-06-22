@@ -44,18 +44,12 @@ Route::prefix('v1')->middleware('lang')->group(function (){
 
     Route::get('settings',[HomeController::class,'settings']);
 
-    Route::get('nationalities',[NationalityController::class,'index']);
-    Route::get('cities',[CityController::class,'index']);
-    Route::get('banks',[BankController::class,'index']);
 
     Route::get('about-us',[HomeController::class,'aboutUs']);
     Route::get('terms',[HomeController::class,'terms']);
     Route::post('contact-us',[ContactUsController::class,'store']);
 
-    Route::get('categories/{type}',[CategoryController::class,'index']);
-    Route::get('sub-categories/{id}',[CategoryController::class,'subCategories']);
 
-    Route::get('slider',[HomeController::class,'slider']);
 
 
     Route::middleware(['auth:sanctum','lang'])->group(function (){
@@ -64,30 +58,6 @@ Route::prefix('v1')->middleware('lang')->group(function (){
         Route::post('profile',[ProfileController::class,'update']);
         Route::post('profile/update-password',[ProfileController::class,'updatePassword']);
         Route::get('delete-account',[ProfileController::class,'delete']);
-
-        Route::get('orders',[OrderController::class,'index']);
-        Route::get('my-orders',[OrderController::class,'myOrders']);
-        Route::get('check-coupon',[OrderController::class,'coupon']);
-
-        Route::get('orders/accept',[OrderController::class,'accept']);
-        Route::get('orders/reject',[OrderController::class,'reject']);
-        Route::post('send-sms',[OrderController::class,'SMS']);
-        Route::post('seller-confirm',[OrderController::class,'sellerConfirm']);
-        Route::post('client-confirm',[OrderController::class,'clientConfirm']);
-        Route::post('rate_order',[OrderController::class,'rateOrder']);
-
-        Route::get('stores',[StoreController::class,'index']);
-
-        Route::get('availability',[ProfileController::class,'availability']);
-
-
-
-
-        Route::get('stores',[StoreController::class,'index']);
-
-        Route::post('stores',[StoreController::class,'store']);
-
-
 
         Route::get('profile/notification',[NotificationController::class,'index']);
 
@@ -98,54 +68,6 @@ Route::prefix('v1')->middleware('lang')->group(function (){
         Route::get('profile/notification/delete-one/{id}',[NotificationController::class,'deleteOne']);
 
 
-        Route::get('report',[ReportController::class,'index']);
-
-        Route::post('equipments',[EquipmentController::class,'create']);
-        Route::get('delete-equipment/{id}',[EquipmentController::class,'delete']);
-
-        Route::get('my-equipments',[EquipmentController::class,'myEquipments']);
-
-        Route::post('orders',[OrderController::class,'store']);
-        Route::get('my-orders',[OrderController::class,'myOrders']);
-        Route::get('cancel-order',[OrderController::class,'cancel']);
-        Route::get('price-order',[OrderController::class,'price']);
-        Route::get('accept-price-order',[OrderController::class,'acceptPrice']);
-
-        Route::get('finish-order',[OrderController::class,'finish']);
-
-
-
-        Route::get('favourite-equipment/{id}',[EquipmentController::class,'favourite']);
-        Route::get('my-favourites',[EquipmentController::class,'myFavourites']);
-
-
-
-
-
-        //offers provider
-        Route::post('offers',[OfferController::class,'store']);
-        Route::post('edit-offer',[OfferController::class,'update']);
-        Route::get('my-offers',[OfferController::class,'myOffers']);
-        Route::get('delete-offer/{id}',[OfferController::class,'delete']);
-        Route::get('offer-switch-seen/{id}',[OfferController::class,'switchSeen']);
-
-        Route::get('favourite-offer/{id}',[OfferController::class,'favourite']);
-        Route::post('comment-offer/{id}',[OfferController::class,'comment']);
-
-        // =============== Start Chat =============== //
-        Route::get('chat/list',[ChatController::class,'index']);
-        Route::get('chat/messages/{id}',[ChatController::class,'messages']);
-        Route::get('chat/channel/{id}',[ChatController::class,'getChannel']);
-        Route::post('chat/messages/send',[ChatController::class,'sendMessage']);
-        // =============== End Chat =============== //
-
-
-        Route::get('home-report',[HomeController::class,'homeWallet']);
-        Route::get('wallet',[HomeController::class,'wallet']);
-        Route::get('wallet-report',[HomeController::class,'walletReport']);
-        Route::get('wallet-report-provider',[HomeController::class,'walletReportProvider']);
-
-
     });
     Route::post('stores/status/{id}',[StoreController::class,'status']);
 
@@ -154,19 +76,6 @@ Route::prefix('v1')->middleware('lang')->group(function (){
 
 
 
-
-    Route::get('get_city_id',[ProfileController::class,'getCity']);
-
-    Route::post('profile/notification/test-fcm',[NotificationController::class,'testFCM']);
-
-
-
-    Route::get('equipments',[EquipmentController::class,'index']);
-
-    Route::get('equipments-list',[EquipmentController::class,'EquipmentsList']);
-    Route::get('brands-list',[EquipmentController::class,'brandsList']);
-
-    Route::get('offers',[OfferController::class,'index']);
 
 
 });
