@@ -37,7 +37,7 @@ class AuthController extends Controller
 //            }
             $token =$this->generateToken($AuthedUser);
             $AuthedUser->api_token = $token->plainTextToken;
-            $AuthedUser->save();
+           return  $AuthedUser->save();
             return $this->okApiResponse(new UserResource($AuthedUser),__("User information"));
 
         }
