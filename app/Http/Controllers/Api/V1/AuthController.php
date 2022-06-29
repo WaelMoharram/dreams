@@ -21,7 +21,7 @@ class AuthController extends Controller
         $sanitized = $request->validated();
 
         if ( Auth::attempt($sanitized) ) {
-            $AuthedUser = Auth::user();
+            return $AuthedUser = Auth::user();
             $user = Auth::user();
 
 //            if (Auth::user()->is_active == 0){
