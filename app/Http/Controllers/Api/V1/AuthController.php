@@ -24,17 +24,17 @@ class AuthController extends Controller
             $AuthedUser = Auth::user();
             $user = Auth::user();
 
-            if (Auth::user()->is_active == 0){
-                $user->sms_code = 123456;
-                $user->save();
-                return $this->unauthorizedApiResponse(['sms_code' => $user->sms_code],__("Your account need to verify mobile"));
-            }
-
-            if (Auth::user()->is_accepted == 0){
-                $user->sms_code = 123456;
-                $user->save();
-                return $this->unauthorizedApiResponse(['is_accepted'=>0],__("Your account need to activate - please contact us"));
-            }
+//            if (Auth::user()->is_active == 0){
+//                $user->sms_code = 123456;
+//                $user->save();
+//                return $this->unauthorizedApiResponse(['sms_code' => $user->sms_code],__("Your account need to verify mobile"));
+//            }
+//
+//            if (Auth::user()->is_accepted == 0){
+//                $user->sms_code = 123456;
+//                $user->save();
+//                return $this->unauthorizedApiResponse(['is_accepted'=>0],__("Your account need to activate - please contact us"));
+//            }
             $token =$this->generateToken($AuthedUser);
             $AuthedUser->api_token = $token->plainTextToken;
             $AuthedUser->save();
