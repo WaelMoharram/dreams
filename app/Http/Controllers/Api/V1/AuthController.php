@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CodeConfirmRequest;
-use App\Http\Requests\ForgetPasswordRequest;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\NewPasswordRequest;
-use App\Http\Requests\RegisterRequest;
+
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponse;
