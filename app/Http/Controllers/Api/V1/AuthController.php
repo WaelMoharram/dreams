@@ -21,7 +21,7 @@ class AuthController extends Controller
         $sanitized = $request->validated();
 
         if ( Auth::attempt($sanitized) ) {
-            return $AuthedUser = Auth::user();
+            $AuthedUser = Auth::user();
             $user = Auth::user();
 
 //            if (Auth::user()->is_active == 0){
@@ -37,8 +37,8 @@ class AuthController extends Controller
 //            }
             $token =$this->generateToken($AuthedUser);
             $AuthedUser->api_token = $token->plainTextToken;
-           return  $AuthedUser->save();
-            return $this->okApiResponse(new UserResource($AuthedUser),__("User information"));
+            $AuthedUser->save();
+            return $this->okApiResponse(new UserResource($user),__("User information"));
 
         }
         return $this->notFoundApiResponse(['information'=>0],__('Please check you information'));
