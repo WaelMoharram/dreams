@@ -8,7 +8,7 @@ return new class extends Migration {
 
 	public function up()
 	{
-		Schema::create('questions', function(Blueprint $table) {
+		Schema::create('question_selects', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
@@ -20,6 +20,6 @@ return new class extends Migration {
 
 	public function down()
 	{
-		Schema::drop('questions');
+		Schema::drop('question_selects');
 	}
 };
