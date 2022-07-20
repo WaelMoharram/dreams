@@ -12,7 +12,6 @@ return new class extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
-
             $table->unsignedBigInteger('question_id');
             $table->text('answer');
 		});
