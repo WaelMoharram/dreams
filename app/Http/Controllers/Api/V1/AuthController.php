@@ -11,6 +11,7 @@ use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -38,7 +39,6 @@ class AuthController extends Controller
             $token =$this->generateToken($AuthedUser);
             $AuthedUser->api_token = $token->plainTextToken;
             $AuthedUser->save();
-            return $user;
             return $this->okApiResponse(new UserResource($user),__("User information"));
 
         }
@@ -49,6 +49,7 @@ class AuthController extends Controller
     {
         //return '123';
         $requests = $request->all();
+
         if (!$request->has('account_type')){
             $requests['account_type']='individual';
         }
@@ -75,6 +76,11 @@ class AuthController extends Controller
         $token =$this->generateToken($user);
         $user->api_token = $token->plainTextToken;
         $user->save();
+
+        Mail::raw('Your activation code is : '.$user->sms_code, function ($message) use($user) {
+            $message->to($user->email)
+                ->subject("Activate your account in Azkary wa Ro'yay app");
+        });
 
         //new SMS($user->mobile,'Your activation code is : '.$user->sms_code);
 //        return $this->okApiResponse(new UserResource($user),__("User information"));

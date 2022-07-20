@@ -12,9 +12,9 @@ return new class extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->text('question');
-            $table->string('answer_type');  // select  - text
-			$table->boolean('is_required');
+
+            $table->unsignedBigInteger('question_id');
+            $table->text('answer');
 		});
 	}
 

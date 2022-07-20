@@ -20,6 +20,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('image')->nullable();
             $table->string('mobile')->nullable();
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('city_id');
+            $table->date('birthdate');
+            $table->string('job');
+            $table->boolean('gender');
+
             $table->integer('sms_code')->nullable();
             $table->string('password');
             $table->string('status')->default('new');
@@ -29,6 +35,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+
+            //
+
+            $table->integer('experience_years')->default(0);
+            $table->string('note')->nullable();
 
         });
     }

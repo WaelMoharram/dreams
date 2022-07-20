@@ -8,18 +8,17 @@ return new class extends Migration {
 
 	public function up()
 	{
-		Schema::create('questions', function(Blueprint $table) {
+		Schema::create('sliders', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->text('question');
-            $table->string('answer_type');  // select  - text
-			$table->boolean('is_required');
+            $table->text('title');
+            $table->text('image');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('questions');
+		Schema::drop('sliders');
 	}
 };
